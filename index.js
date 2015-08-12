@@ -7,10 +7,8 @@ app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
   //response.send('Hello Allison and Tao! Accept my e-Hi.');
-  fs.readFileSync('./index.html', function(err,data){
-    if (err) throw err;
-    response.send(data);
-  });
+  var buf = fs.readFileSync('index.html');
+  response.send(buf.toString());
 })
 
 app.listen(app.get('port'), function() {
